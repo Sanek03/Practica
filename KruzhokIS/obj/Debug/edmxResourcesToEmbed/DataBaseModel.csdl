@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ip110Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Кружок">
+    <Key>
+      <PropertyRef Name="id_кружка" />
+    </Key>
+    <Property Name="id_кружка" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_сотрудника" Type="Int32" Nullable="false" />
+    <Property Name="id_ученика" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Сотрудник1" Relationship="Self.FK_Кружок_Сотрудник1" FromRole="Кружок" ToRole="Сотрудник1" />
+    <NavigationProperty Name="Ученик" Relationship="Self.FK_Кружок_Ученик" FromRole="Кружок" ToRole="Ученик" />
+    <NavigationProperty Name="Расписание" Relationship="Self.FK_Расписание_Кружок" FromRole="Кружок" ToRole="Расписание" />
+  </EntityType>
+  <EntityType Name="Расписание">
+    <Key>
+      <PropertyRef Name="id_расписания" />
+    </Key>
+    <Property Name="id_расписания" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_сотрудника" Type="Int32" Nullable="false" />
+    <Property Name="id_кружка" Type="Int32" Nullable="false" />
+    <Property Name="День_недели" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Кабинет" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Кружок" Relationship="Self.FK_Расписание_Кружок" FromRole="Расписание" ToRole="Кружок" />
+    <NavigationProperty Name="РасписаниеСотрудник1" Relationship="ip110Model.РасписаниеСотрудник1Расписание" FromRole="Расписание" ToRole="РасписаниеСотрудник1" />
+  </EntityType>
+  <EntityType Name="РасписаниеСотрудник1">
+    <Key>
+      <PropertyRef Name="id_расписания" />
+      <PropertyRef Name="id_сотрудника" />
+    </Key>
+    <Property Name="id_расписания" Type="Int32" Nullable="false" />
+    <Property Name="id_сотрудника" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Сотрудник1" Relationship="ip110Model.РасписаниеСотрудник1Сотрудник1" FromRole="РасписаниеСотрудник1" ToRole="Сотрудник1" />
+    <NavigationProperty Name="Расписание" Relationship="ip110Model.РасписаниеСотрудник1Расписание" FromRole="РасписаниеСотрудник1" ToRole="Расписание" />
+  </EntityType>
+  <EntityType Name="Сотрудник1">
+    <Key>
+      <PropertyRef Name="id_сотрудника" />
+    </Key>
+    <Property Name="id_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Номер_телефона" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="серия_номер_паспорта" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_должности" Type="Int32" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Кружок" Relationship="Self.FK_Кружок_Сотрудник1" FromRole="Сотрудник1" ToRole="Кружок" />
+    <NavigationProperty Name="РасписаниеСотрудник1" Relationship="ip110Model.РасписаниеСотрудник1Сотрудник1" FromRole="Сотрудник1" ToRole="РасписаниеСотрудник1" />
+  </EntityType>
+  <EntityType Name="Ученик">
+    <Key>
+      <PropertyRef Name="id_ученика" />
+    </Key>
+    <Property Name="id_ученика" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Кружок" Relationship="Self.FK_Кружок_Ученик" FromRole="Ученик" ToRole="Кружок" />
+  </EntityType>
+  <Association Name="FK_Кружок_Сотрудник1">
+    <End Role="Сотрудник1" Type="Self.Сотрудник1" Multiplicity="1" />
+    <End Role="Кружок" Type="Self.Кружок" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник1">
+        <PropertyRef Name="id_сотрудника" />
+      </Principal>
+      <Dependent Role="Кружок">
+        <PropertyRef Name="id_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Кружок_Ученик">
+    <End Role="Ученик" Type="Self.Ученик" Multiplicity="1" />
+    <End Role="Кружок" Type="Self.Кружок" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ученик">
+        <PropertyRef Name="id_ученика" />
+      </Principal>
+      <Dependent Role="Кружок">
+        <PropertyRef Name="id_ученика" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Расписание_Кружок">
+    <End Role="Кружок" Type="Self.Кружок" Multiplicity="1" />
+    <End Role="Расписание" Type="Self.Расписание" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Кружок">
+        <PropertyRef Name="id_кружка" />
+      </Principal>
+      <Dependent Role="Расписание">
+        <PropertyRef Name="id_кружка" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities8" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Кружок" EntityType="Self.Кружок" />
+    <EntitySet Name="Расписание" EntityType="Self.Расписание" />
+    <EntitySet Name="РасписаниеСотрудник1" EntityType="Self.РасписаниеСотрудник1" />
+    <EntitySet Name="Сотрудник1" EntityType="Self.Сотрудник1" />
+    <EntitySet Name="Ученик" EntityType="Self.Ученик" />
+    <AssociationSet Name="FK_Кружок_Сотрудник1" Association="Self.FK_Кружок_Сотрудник1">
+      <End Role="Сотрудник1" EntitySet="Сотрудник1" />
+      <End Role="Кружок" EntitySet="Кружок" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Кружок_Ученик" Association="Self.FK_Кружок_Ученик">
+      <End Role="Ученик" EntitySet="Ученик" />
+      <End Role="Кружок" EntitySet="Кружок" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Расписание_Кружок" Association="Self.FK_Расписание_Кружок">
+      <End Role="Кружок" EntitySet="Кружок" />
+      <End Role="Расписание" EntitySet="Расписание" />
+    </AssociationSet>
+    <AssociationSet Name="РасписаниеСотрудник1Сотрудник1" Association="ip110Model.РасписаниеСотрудник1Сотрудник1">
+      <End Role="РасписаниеСотрудник1" EntitySet="РасписаниеСотрудник1" />
+      <End Role="Сотрудник1" EntitySet="Сотрудник1" />
+    </AssociationSet>
+    <AssociationSet Name="РасписаниеСотрудник1Расписание" Association="ip110Model.РасписаниеСотрудник1Расписание">
+      <End Role="РасписаниеСотрудник1" EntitySet="РасписаниеСотрудник1" />
+      <End Role="Расписание" EntitySet="Расписание" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="РасписаниеСотрудник1Сотрудник1">
+    <End Type="ip110Model.РасписаниеСотрудник1" Role="РасписаниеСотрудник1" Multiplicity="*" />
+    <End Type="ip110Model.Сотрудник1" Role="Сотрудник1" Multiplicity="1" />
+  </Association>
+  <Association Name="РасписаниеСотрудник1Расписание">
+    <End Type="ip110Model.РасписаниеСотрудник1" Role="РасписаниеСотрудник1" Multiplicity="*" />
+    <End Type="ip110Model.Расписание" Role="Расписание" Multiplicity="1" />
+  </Association>
+</Schema>

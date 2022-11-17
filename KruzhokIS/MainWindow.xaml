@@ -1,0 +1,22 @@
+﻿<Window x:Class="KruzhokIS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KruzhokIS"
+        xmlns:viewModels ="clr-namespace:KruzhokIS.ViewModel"
+        mc:Ignorable="d"
+        Title="Авторизация" MinHeight="450" MinWidth="400" MaxHeight="450" MaxWidth="400" Style="{StaticResource wstyle}" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <viewModels:AuthorizationViewModel />
+    </Window.DataContext>
+    <Grid >
+        <Image Style="{StaticResource logoimage}"/>
+        <TextBlock FontWeight="Bold" FontSize="25" Text="Авторизация" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,130"/>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,0,0,40" Text="Логин"/>
+        <TextBox Text="{Binding Login}" VerticalAlignment="Center" Margin="40" FontSize="18" Background="#FFF0927D"/>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,120,0,40" Text="Пароль"/>
+        <PasswordBox x:Name="_passwordBox" VerticalAlignment="Center" Margin="40,120,40,0" FontSize="18" Background="#FFF0927D"/>
+        <Button Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,40" Content="Войти" Click="Button_Click" />
+    </Grid>
+</Window>

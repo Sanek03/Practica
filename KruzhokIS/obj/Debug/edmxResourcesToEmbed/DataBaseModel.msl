@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ip110ModelContainer" CdmEntityContainer="Entities8">
+    <EntitySetMapping Name="Кружок">
+      <EntityTypeMapping TypeName="ip110Model.Кружок">
+        <MappingFragment StoreEntitySet="Кружок">
+          <ScalarProperty Name="id_кружка" ColumnName="id кружка" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+          <ScalarProperty Name="id_ученика" ColumnName="id ученика" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Расписание">
+      <EntityTypeMapping TypeName="ip110Model.Расписание">
+        <MappingFragment StoreEntitySet="Расписание">
+          <ScalarProperty Name="id_расписания" ColumnName="id расписания" />
+          <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+          <ScalarProperty Name="id_кружка" ColumnName="id кружка" />
+          <ScalarProperty Name="День_недели" ColumnName="День недели" />
+          <ScalarProperty Name="Кабинет" ColumnName="Кабинет" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="РасписаниеСотрудник1">
+      <EntityTypeMapping TypeName="ip110Model.РасписаниеСотрудник1">
+        <MappingFragment StoreEntitySet="РасписаниеСотрудник1">
+          <ScalarProperty Name="id_расписания" ColumnName="id расписания" />
+          <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сотрудник1">
+      <EntityTypeMapping TypeName="ip110Model.Сотрудник1">
+        <MappingFragment StoreEntitySet="Сотрудник1">
+          <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+          <ScalarProperty Name="Номер_телефона" ColumnName="Номер телефона" />
+          <ScalarProperty Name="серия_номер_паспорта" ColumnName="серия номер паспорта" />
+          <ScalarProperty Name="id_должности" ColumnName="id должности" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ученик">
+      <EntityTypeMapping TypeName="ip110Model.Ученик">
+        <MappingFragment StoreEntitySet="Ученик">
+          <ScalarProperty Name="id_ученика" ColumnName="id ученика" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="дата_рождения" ColumnName="дата рождения" />
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

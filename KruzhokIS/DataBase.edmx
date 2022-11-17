@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ip110Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Кружок">
+          <Key>
+            <PropertyRef Name="id кружка" />
+          </Key>
+          <Property Name="id кружка" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id сотрудника" Type="int" Nullable="false" />
+          <Property Name="id ученика" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Расписание">
+          <Key>
+            <PropertyRef Name="id расписания" />
+          </Key>
+          <Property Name="id расписания" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id сотрудника" Type="int" Nullable="false" />
+          <Property Name="id кружка" Type="int" Nullable="false" />
+          <Property Name="День недели" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Кабинет" Type="nvarchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="РасписаниеСотрудник1">
+          <Key>
+            <PropertyRef Name="id расписания" />
+            <PropertyRef Name="id сотрудника" />
+          </Key>
+          <Property Name="id расписания" Type="int" Nullable="false" />
+          <Property Name="id сотрудника" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Сотрудник1">
+          <Key>
+            <PropertyRef Name="id сотрудника" />
+          </Key>
+          <Property Name="id сотрудника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+          <Property Name="Дата рождения" Type="date" Nullable="false" />
+          <Property Name="Номер телефона" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="серия номер паспорта" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="id должности" Type="int" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ученик">
+          <Key>
+            <PropertyRef Name="id ученика" />
+          </Key>
+          <Property Name="id ученика" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+          <Property Name="дата рождения" Type="date" Nullable="false" />
+          <Property Name="Адрес" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Кружок_Сотрудник1">
+          <End Role="Сотрудник1" Type="Self.Сотрудник1" Multiplicity="1" />
+          <End Role="Кружок" Type="Self.Кружок" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник1">
+              <PropertyRef Name="id сотрудника" />
+            </Principal>
+            <Dependent Role="Кружок">
+              <PropertyRef Name="id сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Кружок_Ученик">
+          <End Role="Ученик" Type="Self.Ученик" Multiplicity="1" />
+          <End Role="Кружок" Type="Self.Кружок" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ученик">
+              <PropertyRef Name="id ученика" />
+            </Principal>
+            <Dependent Role="Кружок">
+              <PropertyRef Name="id ученика" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Расписание_Кружок">
+          <End Role="Кружок" Type="Self.Кружок" Multiplicity="1" />
+          <End Role="Расписание" Type="Self.Расписание" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Кружок">
+              <PropertyRef Name="id кружка" />
+            </Principal>
+            <Dependent Role="Расписание">
+              <PropertyRef Name="id кружка" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_РасписаниеСотрудник1_Расписание">
+          <End Role="Расписание" Type="Self.Расписание" Multiplicity="1" />
+          <End Role="РасписаниеСотрудник1" Type="Self.РасписаниеСотрудник1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Расписание">
+              <PropertyRef Name="id расписания" />
+            </Principal>
+            <Dependent Role="РасписаниеСотрудник1">
+              <PropertyRef Name="id расписания" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_РасписаниеСотрудник1_Сотрудник1">
+          <End Role="Сотрудник1" Type="Self.Сотрудник1" Multiplicity="1" />
+          <End Role="РасписаниеСотрудник1" Type="Self.РасписаниеСотрудник1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник1">
+              <PropertyRef Name="id сотрудника" />
+            </Principal>
+            <Dependent Role="РасписаниеСотрудник1">
+              <PropertyRef Name="id сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ip110ModelContainer">
+          <EntitySet Name="Кружок" EntityType="Self.Кружок" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Расписание" EntityType="Self.Расписание" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="РасписаниеСотрудник1" EntityType="Self.РасписаниеСотрудник1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Сотрудник1" EntityType="Self.Сотрудник1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ученик" EntityType="Self.Ученик" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Кружок_Сотрудник1" Association="Self.FK_Кружок_Сотрудник1">
+            <End Role="Сотрудник1" EntitySet="Сотрудник1" />
+            <End Role="Кружок" EntitySet="Кружок" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Кружок_Ученик" Association="Self.FK_Кружок_Ученик">
+            <End Role="Ученик" EntitySet="Ученик" />
+            <End Role="Кружок" EntitySet="Кружок" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Расписание_Кружок" Association="Self.FK_Расписание_Кружок">
+            <End Role="Кружок" EntitySet="Кружок" />
+            <End Role="Расписание" EntitySet="Расписание" />
+          </AssociationSet>
+          <AssociationSet Name="FK_РасписаниеСотрудник1_Расписание" Association="Self.FK_РасписаниеСотрудник1_Расписание">
+            <End Role="Расписание" EntitySet="Расписание" />
+            <End Role="РасписаниеСотрудник1" EntitySet="РасписаниеСотрудник1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_РасписаниеСотрудник1_Сотрудник1" Association="Self.FK_РасписаниеСотрудник1_Сотрудник1">
+            <End Role="Сотрудник1" EntitySet="Сотрудник1" />
+            <End Role="РасписаниеСотрудник1" EntitySet="РасписаниеСотрудник1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ip110Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Кружок">
+          <Key>
+            <PropertyRef Name="id_кружка" />
+          </Key>
+          <Property Name="id_кружка" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_сотрудника" Type="Int32" Nullable="false" />
+          <Property Name="id_ученика" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Сотрудник1" Relationship="Self.FK_Кружок_Сотрудник1" FromRole="Кружок" ToRole="Сотрудник1" />
+          <NavigationProperty Name="Ученик" Relationship="Self.FK_Кружок_Ученик" FromRole="Кружок" ToRole="Ученик" />
+          <NavigationProperty Name="Расписание" Relationship="Self.FK_Расписание_Кружок" FromRole="Кружок" ToRole="Расписание" />
+        </EntityType>
+        <EntityType Name="Расписание">
+          <Key>
+            <PropertyRef Name="id_расписания" />
+          </Key>
+          <Property Name="id_расписания" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_сотрудника" Type="Int32" Nullable="false" />
+          <Property Name="id_кружка" Type="Int32" Nullable="false" />
+          <Property Name="День_недели" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Кабинет" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Кружок" Relationship="Self.FK_Расписание_Кружок" FromRole="Расписание" ToRole="Кружок" />
+          <NavigationProperty Name="Сотрудник1" Relationship="Self.РасписаниеСотрудник1" FromRole="Расписание" ToRole="Сотрудник1" />
+        </EntityType>
+        <EntityType Name="Сотрудник1">
+          <Key>
+            <PropertyRef Name="id_сотрудника" />
+          </Key>
+          <Property Name="id_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="серия_номер_паспорта" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_должности" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Кружок" Relationship="Self.FK_Кружок_Сотрудник1" FromRole="Сотрудник1" ToRole="Кружок" />
+          <NavigationProperty Name="Расписание" Relationship="Self.РасписаниеСотрудник1" FromRole="Сотрудник1" ToRole="Расписание" />
+        </EntityType>
+        <EntityType Name="Ученик">
+          <Key>
+            <PropertyRef Name="id_ученика" />
+          </Key>
+          <Property Name="id_ученика" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Кружок" Relationship="Self.FK_Кружок_Ученик" FromRole="Ученик" ToRole="Кружок" />
+        </EntityType>
+        <Association Name="FK_Кружок_Сотрудник1">
+          <End Role="Сотрудник1" Type="Self.Сотрудник1" Multiplicity="1" />
+          <End Role="Кружок" Type="Self.Кружок" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник1">
+              <PropertyRef Name="id_сотрудника" />
+            </Principal>
+            <Dependent Role="Кружок">
+              <PropertyRef Name="id_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Кружок_Ученик">
+          <End Role="Ученик" Type="Self.Ученик" Multiplicity="1" />
+          <End Role="Кружок" Type="Self.Кружок" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ученик">
+              <PropertyRef Name="id_ученика" />
+            </Principal>
+            <Dependent Role="Кружок">
+              <PropertyRef Name="id_ученика" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Расписание_Кружок">
+          <End Role="Кружок" Type="Self.Кружок" Multiplicity="1" />
+          <End Role="Расписание" Type="Self.Расписание" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Кружок">
+              <PropertyRef Name="id_кружка" />
+            </Principal>
+            <Dependent Role="Расписание">
+              <PropertyRef Name="id_кружка" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="РасписаниеСотрудник1">
+          <End Role="Расписание" Type="Self.Расписание" Multiplicity="*" />
+          <End Role="Сотрудник1" Type="Self.Сотрудник1" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities12" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Кружок" EntityType="Self.Кружок" />
+          <EntitySet Name="Расписание" EntityType="Self.Расписание" />
+          <EntitySet Name="Сотрудник1" EntityType="Self.Сотрудник1" />
+          <EntitySet Name="Ученик" EntityType="Self.Ученик" />
+          <AssociationSet Name="FK_Кружок_Сотрудник1" Association="Self.FK_Кружок_Сотрудник1">
+            <End Role="Сотрудник1" EntitySet="Сотрудник1" />
+            <End Role="Кружок" EntitySet="Кружок" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Кружок_Ученик" Association="Self.FK_Кружок_Ученик">
+            <End Role="Ученик" EntitySet="Ученик" />
+            <End Role="Кружок" EntitySet="Кружок" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Расписание_Кружок" Association="Self.FK_Расписание_Кружок">
+            <End Role="Кружок" EntitySet="Кружок" />
+            <End Role="Расписание" EntitySet="Расписание" />
+          </AssociationSet>
+          <AssociationSet Name="РасписаниеСотрудник1" Association="Self.РасписаниеСотрудник1">
+            <End Role="Расписание" EntitySet="Расписание" />
+            <End Role="Сотрудник1" EntitySet="Сотрудник1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ip110ModelContainer" CdmEntityContainer="Entities12">
+          <EntitySetMapping Name="Кружок">
+            <EntityTypeMapping TypeName="ip110Model.Кружок">
+              <MappingFragment StoreEntitySet="Кружок">
+                <ScalarProperty Name="id_кружка" ColumnName="id кружка" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+                <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+                <ScalarProperty Name="id_ученика" ColumnName="id ученика" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Расписание">
+            <EntityTypeMapping TypeName="ip110Model.Расписание">
+              <MappingFragment StoreEntitySet="Расписание">
+                <ScalarProperty Name="id_расписания" ColumnName="id расписания" />
+                <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+                <ScalarProperty Name="id_кружка" ColumnName="id кружка" />
+                <ScalarProperty Name="День_недели" ColumnName="День недели" />
+                <ScalarProperty Name="Кабинет" ColumnName="Кабинет" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сотрудник1">
+            <EntityTypeMapping TypeName="ip110Model.Сотрудник1">
+              <MappingFragment StoreEntitySet="Сотрудник1">
+                <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+                <ScalarProperty Name="Номер_телефона" ColumnName="Номер телефона" />
+                <ScalarProperty Name="серия_номер_паспорта" ColumnName="серия номер паспорта" />
+                <ScalarProperty Name="id_должности" ColumnName="id должности" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ученик">
+            <EntityTypeMapping TypeName="ip110Model.Ученик">
+              <MappingFragment StoreEntitySet="Ученик">
+                <ScalarProperty Name="id_ученика" ColumnName="id ученика" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="дата_рождения" ColumnName="дата рождения" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="РасписаниеСотрудник1" TypeName="ip110Model.РасписаниеСотрудник1" StoreEntitySet="РасписаниеСотрудник1">
+            <EndProperty Name="Расписание">
+              <ScalarProperty Name="id_расписания" ColumnName="id расписания" />
+            </EndProperty>
+            <EndProperty Name="Сотрудник1">
+              <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
