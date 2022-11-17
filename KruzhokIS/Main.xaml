@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KruzhokIS"
         mc:Ignorable="d"
-        Title="Main" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Style="{StaticResource wstyle}" WindowStartupLocation="CenterScreen">
+        Title="Главный экран" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Style="{StaticResource wstyle}" WindowStartupLocation="CenterScreen">
     <Grid>
         <Image Style="{StaticResource logoimage}"/>
+        <TextBlock Text="Главный экран" Margin="50" HorizontalAlignment="Center"/>
     </Grid>
 </Window>
