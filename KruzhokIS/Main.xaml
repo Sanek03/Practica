@@ -7,7 +7,29 @@
         mc:Ignorable="d"
         Title="Главный экран" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Style="{StaticResource wstyle}" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Image Style="{StaticResource logoimage}"/>
-        <TextBlock Text="Главный экран" Margin="50" HorizontalAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0">
+            <StackPanel DockPanel.Dock="Top"  Margin="0,15" Orientation="Horizontal" VerticalAlignment="Top">
+                <Image Margin="15,0,0,0" Width="25" Height="35" Source="Resources/Images/iconv3.png"></Image>
+                <TextBlock FontSize="15" Margin="15,0,0,0" Foreground="Black"
+                           VerticalAlignment="Center" Text="Кружки" FontWeight="Bold"></TextBlock>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Background="#FFFF6D6D" Height="60" Orientation="Horizontal" VerticalAlignment="Bottom">
+                <Border Margin="7" Width="46" CornerRadius="15">
+                    <Border.Background>
+                        <ImageBrush></ImageBrush>
+                    </Border.Background>
+                </Border>
+                <StackPanel Margin="5,0,0,0" Width="95" Orientation="Vertical">
+                    <TextBlock FontSize="12" Foreground="Black" Margin="0,15,0,0" FontWeight="Bold">
+                    </TextBlock>
+                    <TextBlock Foreground="Black" FontSize="12" Margin="0,2,0,0" FontWeight="Bold" ></TextBlock>
+                </StackPanel>
+                <Button Width="40" Style="{StaticResource buttonexit}"/>
+            </StackPanel>
+        </DockPanel> 
     </Grid>
 </Window>

@@ -9,12 +9,26 @@
     <Style TargetType="{x:Type Image}" x:Key="logoimage">
         <Setter Property="Width" Value="100"/>
         <Setter Property="Height" Value="100"/>
-        <Setter Property="Source" Value="../Images/iconv2.png"/>
+        <Setter Property="Source" Value="../Images/iconv3.png"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
     </Style>
     <Style TargetType="{x:Type Window}" x:Key="wstyle">
         <Setter Property="FontFamily" Value="Times New Roman"/>
         <Setter Property="Background" Value="#FF14AFAF"/>
+    </Style>
+    <Style TargetType="Button" x:Key="buttonexit">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Image Margin="10" Source="../Images/exit.png"></Image>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

@@ -174,6 +174,7 @@
       <DependentUpon>DataBase.edmx</DependentUpon>
       <LastGenOutput>DataBase1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\exit.png" />
     <Resource Include="Resources\Images\iconv2.png" />
     <Resource Include="Resources\Images\iconv3.png" />
   </ItemGroup>
