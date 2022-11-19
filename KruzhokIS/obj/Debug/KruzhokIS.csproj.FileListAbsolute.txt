@@ -26,3 +26,34 @@ Y:\Student\19ИП1\МДК 05.02_кр\1 подгруппа\Леонтьев\Kruzh
 Y:\Student\19ИП1\МДК 05.02_кр\1 подгруппа\Леонтьев\KruzhokIS\KruzhokIS\obj\Debug\KruzhokIS.csproj.AssemblyReference.cache
 Y:\Student\19ИП1\МДК 05.02_кр\1 подгруппа\Леонтьев\KruzhokIS\KruzhokIS\obj\Debug\Main.g.cs
 Y:\Student\19ИП1\МДК 05.02_кр\1 подгруппа\Леонтьев\KruzhokIS\KruzhokIS\obj\Debug\Main.baml
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\bin\Debug\KruzhokIS.exe.config
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\bin\Debug\KruzhokIS.exe
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\bin\Debug\KruzhokIS.pdb
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\bin\Debug\EntityFramework.dll
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\bin\Debug\EntityFramework.xml
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS.csproj.AssemblyReference.cache
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\Resources\Themes\DefaultThemes.baml
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\Main.g.cs
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\MainWindow.g.cs
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\App.g.cs
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS_Content.g.cs
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS_MarkupCompile.cache
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS_MarkupCompile.lref
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\App.baml
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\Main.baml
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\MainWindow.baml
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS.g.resources
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS.Properties.Resources.resources
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS.csproj.GenerateResource.cache
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS.csproj.CoreCompileInputs.cache
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS.csproj.CopyComplete
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS.exe
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\KruzhokIS.pdb
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\Pages\MainPages\Page1.g.cs
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\Pages\MainPages\Page2.g.cs
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\Pages\MainPages\Page1.baml
+C:\Users\San4eZzz\Documents\GitHub\Practica\KruzhokIS\obj\Debug\Pages\MainPages\Page2.baml

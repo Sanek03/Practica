@@ -26,8 +26,7 @@ namespace KruzhokIS
         public string Имя { get; set; }
         public string Отчество { get; set; }
         public System.DateTime Дата_рождения { get; set; }
-        public string Номер_телефона { get; set; }
-        public string серия_номер_паспорта { get; set; }
+        public string номер_телефона { get; set; }
         public int id_должности { get; set; }
         public string login { get; set; }
         public string password { get; set; }

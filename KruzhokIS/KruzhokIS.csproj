@@ -86,7 +86,16 @@
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MainPages\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPages\Page2.xaml.cs">
+      <DependentUpon>Page2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AuthorizationViewModel.cs" />
+    <Compile Include="ViewModel\DirektorViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\UchitelViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Кружок.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
@@ -116,6 +125,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\MainPages\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPages\Page2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Themes\DefaultThemes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,6 +181,11 @@
     <Resource Include="Resources\Icon\icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\exit.png" />
+    <Resource Include="Resources\Images\iconv2.png" />
+    <Resource Include="Resources\Images\iconv3.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DataBase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataBase.edmx</DependentUpon>
@@ -174,9 +196,6 @@
       <DependentUpon>DataBase.edmx</DependentUpon>
       <LastGenOutput>DataBase1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\Images\exit.png" />
-    <Resource Include="Resources\Images\iconv2.png" />
-    <Resource Include="Resources\Images\iconv3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

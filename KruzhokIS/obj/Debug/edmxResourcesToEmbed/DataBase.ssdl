@@ -5,7 +5,7 @@
       <PropertyRef Name="id кружка" />
     </Key>
     <Property Name="id кружка" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Название" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="название" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="id сотрудника" Type="int" Nullable="false" />
     <Property Name="id ученика" Type="int" Nullable="false" />
   </EntityType>
@@ -16,16 +16,8 @@
     <Property Name="id расписания" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id сотрудника" Type="int" Nullable="false" />
     <Property Name="id кружка" Type="int" Nullable="false" />
-    <Property Name="День недели" Type="nvarchar" MaxLength="11" Nullable="false" />
-    <Property Name="Кабинет" Type="nvarchar" MaxLength="4" Nullable="false" />
-  </EntityType>
-  <EntityType Name="РасписаниеСотрудник1">
-    <Key>
-      <PropertyRef Name="id расписания" />
-      <PropertyRef Name="id сотрудника" />
-    </Key>
-    <Property Name="id расписания" Type="int" Nullable="false" />
-    <Property Name="id сотрудника" Type="int" Nullable="false" />
+    <Property Name="День недели" Type="int" Nullable="false" />
+    <Property Name="Кабинет" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Сотрудник1">
     <Key>
@@ -34,10 +26,9 @@
     <Property Name="id сотрудника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+    <Property Name="Отчество" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Дата рождения" Type="date" Nullable="false" />
-    <Property Name="Номер телефона" Type="nvarchar" MaxLength="11" Nullable="false" />
-    <Property Name="серия номер паспорта" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="номер телефона" Type="nvarchar" MaxLength="11" Nullable="false" />
     <Property Name="id должности" Type="int" Nullable="false" />
     <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -49,9 +40,9 @@
     <Property Name="id ученика" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Фамилия" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+    <Property Name="Отчество" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="дата рождения" Type="date" Nullable="false" />
-    <Property Name="Адрес" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="адрес" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_Кружок_Сотрудник1">
     <End Role="Сотрудник1" Type="Self.Сотрудник1" Multiplicity="1" />
@@ -89,26 +80,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_РасписаниеСотрудник1_Расписание">
-    <End Role="Расписание" Type="Self.Расписание" Multiplicity="1" />
-    <End Role="РасписаниеСотрудник1" Type="Self.РасписаниеСотрудник1" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Расписание">
-        <PropertyRef Name="id расписания" />
-      </Principal>
-      <Dependent Role="РасписаниеСотрудник1">
-        <PropertyRef Name="id расписания" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_РасписаниеСотрудник1_Сотрудник1">
+  <Association Name="FK_Расписание_Сотрудник1">
     <End Role="Сотрудник1" Type="Self.Сотрудник1" Multiplicity="1" />
-    <End Role="РасписаниеСотрудник1" Type="Self.РасписаниеСотрудник1" Multiplicity="*" />
+    <End Role="Расписание" Type="Self.Расписание" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Сотрудник1">
         <PropertyRef Name="id сотрудника" />
       </Principal>
-      <Dependent Role="РасписаниеСотрудник1">
+      <Dependent Role="Расписание">
         <PropertyRef Name="id сотрудника" />
       </Dependent>
     </ReferentialConstraint>
@@ -116,7 +95,6 @@
   <EntityContainer Name="Хранилище ip110ModelContainer">
     <EntitySet Name="Кружок" EntityType="Self.Кружок" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Расписание" EntityType="Self.Расписание" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="РасписаниеСотрудник1" EntityType="Self.РасписаниеСотрудник1" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Сотрудник1" EntityType="Self.Сотрудник1" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ученик" EntityType="Self.Ученик" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Кружок_Сотрудник1" Association="Self.FK_Кружок_Сотрудник1">
@@ -131,13 +109,9 @@
       <End Role="Кружок" EntitySet="Кружок" />
       <End Role="Расписание" EntitySet="Расписание" />
     </AssociationSet>
-    <AssociationSet Name="FK_РасписаниеСотрудник1_Расписание" Association="Self.FK_РасписаниеСотрудник1_Расписание">
-      <End Role="Расписание" EntitySet="Расписание" />
-      <End Role="РасписаниеСотрудник1" EntitySet="РасписаниеСотрудник1" />
-    </AssociationSet>
-    <AssociationSet Name="FK_РасписаниеСотрудник1_Сотрудник1" Association="Self.FK_РасписаниеСотрудник1_Сотрудник1">
+    <AssociationSet Name="FK_Расписание_Сотрудник1" Association="Self.FK_Расписание_Сотрудник1">
       <End Role="Сотрудник1" EntitySet="Сотрудник1" />
-      <End Role="РасписаниеСотрудник1" EntitySet="РасписаниеСотрудник1" />
+      <End Role="Расписание" EntitySet="Расписание" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

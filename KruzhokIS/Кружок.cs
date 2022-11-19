@@ -21,7 +21,7 @@ namespace KruzhokIS
         }
     
         public int id_кружка { get; set; }
-        public string Название { get; set; }
+        public string название { get; set; }
         public int id_сотрудника { get; set; }
         public int id_ученика { get; set; }
     

@@ -5,7 +5,7 @@
       <PropertyRef Name="id_кружка" />
     </Key>
     <Property Name="id_кружка" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="id_сотрудника" Type="Int32" Nullable="false" />
     <Property Name="id_ученика" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Сотрудник1" Relationship="Self.FK_Кружок_Сотрудник1" FromRole="Кружок" ToRole="Сотрудник1" />
@@ -19,10 +19,10 @@
     <Property Name="id_расписания" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="id_сотрудника" Type="Int32" Nullable="false" />
     <Property Name="id_кружка" Type="Int32" Nullable="false" />
-    <Property Name="День_недели" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Кабинет" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="День_недели" Type="Int32" Nullable="false" />
+    <Property Name="Кабинет" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Кружок" Relationship="Self.FK_Расписание_Кружок" FromRole="Расписание" ToRole="Кружок" />
-    <NavigationProperty Name="Сотрудник1" Relationship="Self.РасписаниеСотрудник1" FromRole="Расписание" ToRole="Сотрудник1" />
+    <NavigationProperty Name="Сотрудник1" Relationship="Self.FK_Расписание_Сотрудник1" FromRole="Расписание" ToRole="Сотрудник1" />
   </EntityType>
   <EntityType Name="Сотрудник1">
     <Key>
@@ -31,15 +31,14 @@
     <Property Name="id_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Номер_телефона" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="серия_номер_паспорта" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="номер_телефона" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="id_должности" Type="Int32" Nullable="false" />
     <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Кружок" Relationship="Self.FK_Кружок_Сотрудник1" FromRole="Сотрудник1" ToRole="Кружок" />
-    <NavigationProperty Name="Расписание" Relationship="Self.РасписаниеСотрудник1" FromRole="Сотрудник1" ToRole="Расписание" />
+    <NavigationProperty Name="Расписание" Relationship="Self.FK_Расписание_Сотрудник1" FromRole="Сотрудник1" ToRole="Расписание" />
   </EntityType>
   <EntityType Name="Ученик">
     <Key>
@@ -48,9 +47,9 @@
     <Property Name="id_ученика" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Кружок" Relationship="Self.FK_Кружок_Ученик" FromRole="Ученик" ToRole="Кружок" />
   </EntityType>
   <Association Name="FK_Кружок_Сотрудник1">
@@ -89,11 +88,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="РасписаниеСотрудник1">
+  <Association Name="FK_Расписание_Сотрудник1">
+    <End Role="Сотрудник1" Type="Self.Сотрудник1" Multiplicity="1" />
     <End Role="Расписание" Type="Self.Расписание" Multiplicity="*" />
-    <End Role="Сотрудник1" Type="Self.Сотрудник1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник1">
+        <PropertyRef Name="id_сотрудника" />
+      </Principal>
+      <Dependent Role="Расписание">
+        <PropertyRef Name="id_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Entities12" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Entities14" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Кружок" EntityType="Self.Кружок" />
     <EntitySet Name="Расписание" EntityType="Self.Расписание" />
     <EntitySet Name="Сотрудник1" EntityType="Self.Сотрудник1" />
@@ -110,9 +117,9 @@
       <End Role="Кружок" EntitySet="Кружок" />
       <End Role="Расписание" EntitySet="Расписание" />
     </AssociationSet>
-    <AssociationSet Name="РасписаниеСотрудник1" Association="Self.РасписаниеСотрудник1">
-      <End Role="Расписание" EntitySet="Расписание" />
+    <AssociationSet Name="FK_Расписание_Сотрудник1" Association="Self.FK_Расписание_Сотрудник1">
       <End Role="Сотрудник1" EntitySet="Сотрудник1" />
+      <End Role="Расписание" EntitySet="Расписание" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

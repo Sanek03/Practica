@@ -31,4 +31,23 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="menuListItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Height="50" BorderThickness="0" Background="Transparent" Name="_border">
+                        <ContentPresenter></ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="_border" Property="Background" Value="#1C1A2F"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="_border" Property="Background" Value="#1C1A2F"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

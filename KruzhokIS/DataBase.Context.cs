@@ -13,10 +13,10 @@ namespace KruzhokIS
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities12 : DbContext
+    public partial class Entities14 : DbContext
     {
-        public Entities12()
-            : base("name=Entities12")
+        public Entities14()
+            : base("name=Entities14")
         {
         }
     

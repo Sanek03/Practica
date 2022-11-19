@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a9d3c63a486a4c4b9299b266594d2fd7" Name="Diagram1">
-        <EntityTypeShape EntityType="ip110Model.Кружок" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip110Model.Расписание" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip110Model.Сотрудник1" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip110Model.Ученик" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+      <Diagram DiagramId="6c2341f3c8b04a63952a7123789fb79f" Name="Diagram1">
+        <EntityTypeShape EntityType="ip110Model.Кружок" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ip110Model.Расписание" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ip110Model.Сотрудник1" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ip110Model.Ученик" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="ip110Model.FK_Кружок_Сотрудник1" ManuallyRouted="false" />
         <AssociationConnector Association="ip110Model.FK_Кружок_Ученик" ManuallyRouted="false" />
         <AssociationConnector Association="ip110Model.FK_Расписание_Кружок" ManuallyRouted="false" />
-        <AssociationConnector Association="ip110Model.РасписаниеСотрудник1" ManuallyRouted="false" />
+        <AssociationConnector Association="ip110Model.FK_Расписание_Сотрудник1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

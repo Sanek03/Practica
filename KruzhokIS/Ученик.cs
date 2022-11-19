@@ -25,7 +25,7 @@ namespace KruzhokIS
         public string Имя { get; set; }
         public string Отчество { get; set; }
         public System.DateTime дата_рождения { get; set; }
-        public string Адрес { get; set; }
+        public string адрес { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Кружок> Кружок { get; set; }
